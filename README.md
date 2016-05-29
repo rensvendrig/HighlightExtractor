@@ -6,9 +6,9 @@ ranking followed by sentence selection.
 In sentence ranking, we implement query-sensitive LexRank and Manifold.
 In sentence selection, we implement the n-gram redudancy measurement.
 
-# usage
+## usage
 See example.py
 
-# To do
+## To do
 Sentence ranking: Support Vector Regression
 Sentence selection: Submodular and Integer Linear Programming
