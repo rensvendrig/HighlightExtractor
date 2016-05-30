@@ -1,6 +1,7 @@
 from pysumm.factory import build_common_pipeline
 from nlputils.factory import build_common_document_converter
 from nlputils.data_structure import DocumentCluster
+from pysumm.rouge_wrap import RougeWrapper
 
 def end2end_test(doc_content_list,query_content):
     doc_converter=build_common_document_converter()
@@ -12,6 +13,7 @@ def end2end_test(doc_content_list,query_content):
     doc_cluster=DocumentCluster(doc_list)
     query=doc_converter.convert_to_document(query_content)
     summary=pipeline.summarize(doc_cluster, query=query, length_mode=1, length_limit=4)
+    
     for sent in summary.sents:
         print sent.saliency,'\t',sent.content   
     return
@@ -45,7 +47,12 @@ A forester on contract with the U.S. Navy found her campsite on October 11, 2015
     query_content='''
     The text of July 23 wasn't the last Largay tried to send. There were also messages on the afternoon of July 30. And two texts were deleted on August 6, the same date of her hopeless journal entry.
     '''
-    end2end_test((doc1_text,doc2_text,doc3_text),query_content)
+    human_summary='''
+    Investigators this week released documents and photos related to the case. Texts and journal entries reveal Largay, 66, was alive for almost a month after she went missing.
+Largay tried on July 22 to text her husband, who was meeting her at certain points along the almost 2,200-mile long trail, to get help from the Appalachian Mountain Club.
+"In somm trouble. Got off trail to go to br. Now lost. Can u call AMC to c if a trail maintainer can help me. Somewhere north of woods road. Xox," she wrote.
+    '''
+    end2end_test((doc1_text,doc2_text,doc3_text),query_content)    
     return
 
 
