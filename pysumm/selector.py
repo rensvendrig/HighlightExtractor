@@ -19,12 +19,12 @@ class Selector(object):
         '''
         summary_sents=[]
         count=0
+        self.measurement.clear()
         for sent in ranked_sentences:
             sent.rouge_tokens=rouge_tokenize(sent)
             sent=self.sent_filter.filter_sentence(sent)
             if not sent: continue
-            if self.measurement.is_redudant(sent): continue
-            self.measurement.put_into_summary(sent)
+            if not self.measurement.check_put(sent): continue
             if limit_mode==LIMIT_SENTENCE:
                 count+=1
             elif limit_mode==LIMIT_TOKEN:
@@ -43,6 +43,9 @@ class RedudancyMeasurement():
         pass
     @abstractmethod
     def put_into_summary(self,sent):
+        pass
+    
+    def clear(self):
         pass
     
     def check_put(self,sent):
@@ -75,6 +78,9 @@ class NgramMeasurement(RedudancyMeasurement):
         ngrams=self.to_ngrams(sent)
         for ngram in ngrams:
             self.current_ngrams.add(ngram)
+            
+    def clear(self):
+        self.current_ngrams.clear()
     
 class SummarySentenceFilter(object):
     def __init__(self,min_length=9):

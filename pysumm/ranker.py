@@ -12,6 +12,9 @@ class Ranker():
 
     @abstractmethod
     def rank(self,doc_cluster,query=None):
+        '''
+        return a list of ranked sentences
+        '''
         pass
 
 

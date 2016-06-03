@@ -2,6 +2,7 @@ from pysumm.factory import build_common_pipeline
 from nlputils.factory import build_common_document_converter
 from nlputils.data_structure import DocumentCluster
 from pysumm.rouge_wrap import RougeWrapper
+from PyTimer import Stopwatch
 
 def end2end_test(doc_content_list,query_content,human_summary_content):
     doc_converter=build_common_document_converter()
@@ -57,7 +58,10 @@ A forester on contract with the U.S. Navy found her campsite on October 11, 2015
     human_summary='''
     There were entries through August 10 then nothing until the 18th. It was the last entry, 27 days after she got lost.
     '''
-    end2end_test((doc1_text,doc2_text,doc3_text),query_content,human_summary)    
+    stopwatch=Stopwatch()
+    stopwatch.start()
+    end2end_test((doc1_text,doc2_text,doc3_text),query_content,human_summary)
+    stopwatch.end_and_show('Summarizer')    
     return
 
 
