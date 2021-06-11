@@ -16,3 +16,7 @@ outperforms other models on the domain-specific dataset.
 - example.py                      run this file to generate multiple summaries on the dataset without margins. Change the parameters in the main() to modify the dataset. 
 - baseline_models.py              run this file and change the parameters to check the ROUGE scores of the internal components of the pipeline and the baseline and SOTA models.
 - run_extractor_single_tech.py    run this file to test a single technology. This file is also used by Findest in their AI. 
+
+## data
+The data with and without margins used in the experiments can be found here:
+https://drive.google.com/drive/folders/15RuMbzM3ug2P_9m3uAXivYs1nMKx-UE6?usp=sharing
