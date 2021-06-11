@@ -13,6 +13,6 @@ valuable contributions to extractive summarization and the proposed pipeline
 outperforms other models on the domain-specific dataset.
 
 ## usage
-example.py                      run this file to generate multiple summaries on the dataset without margins. Change the parameters in the main() to modify the dataset. 
-baseline_models.py              run this file and change the parameters to check the ROUGE scores of the internal components of the pipeline and the baseline and SOTA models.
-run_extractor_single_tech.py    run this file to test a single technology. This file is also used by Findest in their AI. 
+- example.py                      run this file to generate multiple summaries on the dataset without margins. Change the parameters in the main() to modify the dataset. 
+- baseline_models.py              run this file and change the parameters to check the ROUGE scores of the internal components of the pipeline and the baseline and SOTA models.
+- run_extractor_single_tech.py    run this file to test a single technology. This file is also used by Findest in their AI. 
